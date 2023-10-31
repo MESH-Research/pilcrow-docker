@@ -17,7 +17,7 @@ For detailed deployment information [review the documentation.](https://pilcrow.
 - Clone this repository:
 
 ```sh
-git clone https://github.com/mesh-research/pilcrow [destination]
+git clone https://github.com/mesh-research/pilcrow-docker[destination]
 ```
 
 - Copy the sample environment file
@@ -30,7 +30,7 @@ cp sample.env .env
 - Edit the .env file
 
 ```sh
-nane .env
+nano .env
 ```
 
 - Start stack
