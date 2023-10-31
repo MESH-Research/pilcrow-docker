@@ -1,0 +1,24 @@
+version: "3"
+services:
+  client:
+    image: ghcr.io/mesh-research/pilcrow/web:latest
+    ports:
+      - ${APP_PORT}:8888
+    depends_on:
+      - phpfpm
+    volumes:
+      - storage:/var/www/storage
+    environment:
+      FPM_HOST: phpfpm:9000
+    networks:
+      - backend
+  phpfpm:
+    image: ghcr.io/mesh-research/pilcrow/fpm:latest
+    volumes:
+      - storage:/var/www/html/storage
+    networks:
+      - backend
+volumes:
+  storage:
+networks:
+  backend:
