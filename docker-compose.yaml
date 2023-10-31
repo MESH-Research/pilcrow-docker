@@ -1,6 +1,7 @@
 version: "3"
 services:
   client:
+    restart: always
     image: ghcr.io/mesh-research/pilcrow/web:latest
     ports:
       - ${APP_PORT}:8888
@@ -13,11 +14,15 @@ services:
     networks:
       - backend
   phpfpm:
+    restart: always
     image: ghcr.io/mesh-research/pilcrow/fpm:latest
     volumes:
       - storage:/var/www/html/storage
     networks:
       - backend
+  init:
+    image: ghcr.io/mesh-research/pilcrow/fpm:latest
+    command: ./artisan migrate"
 volumes:
   storage:
 networks:
